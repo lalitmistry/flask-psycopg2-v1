@@ -45,7 +45,7 @@ def contacts():
         return []
 
 @app.route('/accounts')
-def contacts():
+def accounts():
     try:
         my_list = []
         if cur != None:
