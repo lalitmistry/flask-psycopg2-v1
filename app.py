@@ -27,25 +27,8 @@ def hello():
     app.logger.info('Info')
     return 'Hello World!'
 
-@app.route('/contacts')
-def contacts():
-    try:
-        my_list = []
-        if cur != None:
-            cur.execute("""SELECT name from salesforce.contact""")
-            rows = cur.fetchall()
-            response = ''
-            
-            for row in rows:
-                my_list.append(row[0])
-
-        return render_template('template.html',  results=my_list)
-    except Exception as e:
-        print(e)
-        return []
-
 @app.route('/accounts')
-def accounts():
+def contacts():
     try:
         my_list = []
         if cur != None:
@@ -60,7 +43,7 @@ def accounts():
     except Exception as e:
         print(e)
         return []
-    
+
 if __name__ == '__main__':
     handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=10)
     handler.setLevel(logging.INFO)
